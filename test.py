@@ -105,7 +105,7 @@ for dict in array:
             else:
                 in_time = dict[date][i]['checkin']
                 out_time = dict[date][i]['checkout']
-                length = len(dict[date][i]['cicheckinn'])
+                length = len(dict[date][i]['checkin'])
                 if length>0 and len(in_time) > 0:
                     runningSum = 0
                     for l, i, k in zip(range(length), range(0, length, 2), range(1, length, 2)):
