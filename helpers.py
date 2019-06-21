@@ -1,4 +1,5 @@
 import math
+import csv
 def to_decimal(ftime):
     """This function converts hours 
     that are in the for hh:mm:sec 
@@ -33,6 +34,15 @@ def to_ftime(dec_time):
     seconds = math.floor(temps)
 
     return ( str(int(hours)).zfill(2) + ":" + str(int(minutes)).zfill(2) + ":" + str(int(seconds)).zfill(2) )
-
-print (to_ftime(0.44930555555555557))
-print (to_ftime(0.189583))
+def write_to_csv(data, file_name, row_names):
+    """
+        This Function writes an arry of dictionaries
+        to a csv file using the csv modules DIctwriter function
+    """
+    f = open("csv/" + file_name + ".csv", "w")
+    writer = csv.DictWriter(f, fieldnames=row_names)
+    writer.writeheader()
+    writer.writerows(data)
+    f.close()
+# print (to_ftime(0.44930555555555557))
+# print (to_ftime(0.189583))
