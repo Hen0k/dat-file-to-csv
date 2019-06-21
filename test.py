@@ -76,9 +76,11 @@ for line in lines:
     else:
         #print 2
         for day in array:
-            if day.has_key(date):
+            if date in day:
+            # if day.has_key(date):
                 # the date exists
-                if day[date].has_key(empid):
+                if empid in day[date]:
+                # if day[date].has_key(empid):
                     if pun_stat == CHECK_IN:
                         if (len(day[date][empid]['checkin']) > 0) and day[date][empid]['checkin'][-1] != 'none': 
                             # check in without a checkout is passed
@@ -230,10 +232,7 @@ print(len(for_csv))
 print(for_csv)
 
 
-
-f = open("att.csv", "w")
-writer = csv.DictWriter(
-    f, fieldnames=["employeeID", "date", "in1", "out1", "in2", "out2", "in3", "out3", "in4", "out4", "in5", "out5", 'hoursWorked_str', 'Raw_hours'])
-writer.writeheader()
-writer.writerows(for_csv)
-f.close()
+row_names = ["employeeID", "date", "in1", "out1", "in2", "out2",
+             "in3", "out3", "in4", "out4", "in5", "out5", 'hoursWorked_str',
+             'Raw_hours']
+helpers.write_to_csv(for_csv, 'may', row_names)
